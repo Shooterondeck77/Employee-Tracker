@@ -80,3 +80,73 @@ function allEmployees() {
             menu()
         })
 }
+
+function addRole() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'roleName',
+                message: 'What is the name of the role?'
+            },
+            {
+                type: 'input',
+                name: 'salary',
+                message: 'What is the salary of the role?'
+            },
+            {
+                type: 'input',
+                name: 'roleDepartment',
+                message: 'Which department does the role belong to?'
+            },
+        ]).then(response => {
+            const query = `INSERT INTO roles SET ?`
+            db.query(
+                query, {
+                title: response.roleName,
+                salary: response.salary,
+                department_id: response.roleDepartment
+            }
+            )
+            console.log(`Added ${response.roleName} to the database`);
+            menu()
+        })
+}
+
+function addEmployee() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'firstName',
+                message: "What is the employee's first name?"
+            },
+            {
+                type: 'input',
+                name: 'lastName',
+                message: "What is the employee's last name?"
+            },
+            {
+                type: 'input',
+                name: 'employeeRole',
+                message: "What is the employee's role id?"
+            },
+            {
+                type: 'input',
+                name: 'manager',
+                message: "What is the employee's manager id?"
+            },
+        ]).then(response => {
+            const query = `INSERT INTO employee SET ?`
+            db.query(
+                query, {
+                first_name: response.firstName,
+                last_name: response.lastName,
+                role_id: response.employeeRole,
+                manager_id: response.manager
+            }
+            )
+            console.log(`Added ${response.firstName} ${response.lastName} to the database`);
+            menu()
+        })
+}
