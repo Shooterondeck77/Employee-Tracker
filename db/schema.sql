@@ -1,12 +1,12 @@
-DROP DATABASE IF EXISTS employertracker_db;
--- Creates the "employertracker_db" database --
-CREATE DATABASE employertracker_db;
+DROP DATABASE IF EXISTS employeetracker_db;
+-- Creates the "employeetracker_db" database --
+CREATE DATABASE employeetracker_db;
 
-USE employertracker_db;
+USE employeetracker_db;
 
 CREATE TABLE deparment (
 
-  id INT NOT NULL AUTO_INCREMENT PRIMATY KEY,
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 
   deparment_name VARCHAR(30) NOT NULL
 );
