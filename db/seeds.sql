@@ -3,8 +3,8 @@ VALUES (1, "Management"),
        (2, "Sales"),
        (3, "Mechanic"),
        (4, "Finance"),
-       (5, "Legal")
-       (6, "Costumer Service")
+       (5, "Legal"),
+       (6, "Costumer Service"),
        (7, "Insurance");
 
 -- Role seeds
@@ -17,9 +17,9 @@ VALUES (1, "CEO", 1000000),
        (4, "Accountant Manager", 110000),
        (4, "Accountant", 90000),
        (5, "Legal Team Lead", 190000),
-       (5, "Lawyer", 160000)
-       (6, "Lead Costumer Service", 80000)
-       (6, "Costumer Service Person", 60000)
+       (5, "Lawyer", 160000),
+       (6, "Lead Costumer Service", 80000),
+       (6, "Costumer Service Person", 60000),
        (7, "Insurance Representative", 65000);
 
 -- Employee seeds
@@ -32,7 +32,7 @@ VALUES ("Lopez", "Jose", 1, null),
        ("Levine", "Adam", 6, 1),
        ("Lionel", "Messi", 7, 4),
        ("Malik", "Zayn", 8, 1),
-       ("Wayne", "Bruce", 9, 5)
-       ("Morales", "Miles", 10, 1)
-       ("Lopez", "Jennifer", 11, 6);
-       ("Craig", "Daniel", 12, 1)
+       ("Wayne", "Bruce", 9, 5),
+       ("Morales", "Miles", 10, 1),
+       ("Lopez", "Jennifer", 11, 6),
+       ("Craig", "Daniel", 12, 1);

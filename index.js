@@ -10,9 +10,11 @@ const db = mysql.createConnection({
 });
 
 db.connect(function (err) {
-    if (err) throw err
+    if (err) {
+        throw err
+    }
     console.log("MySQL Connected")
-    mainMenu();
+    menu();
 });
 
 function menu() {
@@ -22,8 +24,11 @@ function menu() {
                 type: 'list',
                 name: 'choice',
                 message: 'What would you like to see?',
-                choices: ['View all Departments', 'View all Roles', 'View all Employees', 'Add Department', 'Add Role', 'Add Employee', 'Update Employee', 'Quit']
-            }]).then(response => {
+                choices: ['View all Departments', 'View all Roles', 'View all Employees', 'Add Role', 'Add Employee', 'Update Employee', 'Quit']
+            },
+       
+    ]).then(response => {
+        console.log("Answers: ", response)
                 if (response.choice === 'View all Departments') {
                     allDepartments()
                 }
@@ -32,9 +37,6 @@ function menu() {
                 }
                 else if (response.choice === 'View all Employees') {
                     allEmployees()
-                }
-                else if (response.choice === 'Add Department') {
-                    addDepartment()
                 }
                 else if (response.choice === 'Add Role') {
                     addRole()
@@ -52,7 +54,7 @@ function menu() {
 }
 
 function allDepartments() {
-    const query = `SELECT * FROM department`;
+    const query = `SELECT * FROM department;`;
     db.query(query,
         function (err, res) {
             if (err) throw err
@@ -62,7 +64,7 @@ function allDepartments() {
 }
 
 function allRoles() {
-    const query = `SELECT * FROM roles`;
+    const query = `SELECT * FROM role;`;
     db.query(query,
         function (err, res) {
             if (err) throw err
@@ -100,7 +102,7 @@ function addRole() {
                 message: 'Which department does the role belong to?'
             },
         ]).then(response => {
-            const query = `INSERT INTO roles SET ?`
+            const query = `INSERT INTO role SET ?`
             db.query(
                 query, {
                 title: response.roleName,
@@ -171,19 +173,19 @@ function updateEmployee() {
                 const params = [];
                 params.push(employee);
 
-                const roleSql = `SELECT * FROM roles`;
+                const roleSql = `SELECT * FROM role`;
 
                 db.query(roleSql, (err, data) => {
                     if (err) throw err;
 
-                    const roles = data.map(({ id, title }) => ({ name: title, value: id }));
+                    const role = data.map(({ id, title }) => ({ name: title, value: id }));
 
                     inquirer.prompt([
                         {
                             type: 'list',
                             name: 'role',
                             message: "What is the employee's new role?",
-                            choices: roles
+                            choices: role
                         }
                     ])
                         .then(roleChoice => {
